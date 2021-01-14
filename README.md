@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-OpenSource-yellow.svg)](https://opensource.org/licenses/)
 
-# Code Project:: Burger
+# Code Project :: Burger
 
 ## Description
 

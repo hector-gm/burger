@@ -1,0 +1,27 @@
+{
+  "name": "week13_hw",
+  "version": "1.0.0",
+  "description": "Restaurant-geared app to record users' desired burgers into a databse",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hector-gm/burger.git"
+  },
+  "author": "hector-gm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hector-gm/burger/issues"
+  },
+  "homepage": "https://github.com/hector-gm/burger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

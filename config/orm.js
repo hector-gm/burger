@@ -46,11 +46,11 @@ const orm = {
         cb(result);
       });
     },
-    insertOne(table, cols, vals, cb) {
+    insertOne(table, col, val, cb) {
       let queryString = `INSERT INTO ${table}`;
   
       queryString += ' (';
-      queryString += cols.toString();
+      queryString += col;
       queryString += ') ';
       queryString += 'VALUES (';
       queryString += printQuestionMarks(vals.length);
@@ -58,7 +58,7 @@ const orm = {
   
       console.log(queryString);
   
-      connection.query(queryString, vals, (err, result) => {
+      connection.query(queryString, val, (err, result) => {
         if (err) {
           throw err;
         }
@@ -86,5 +86,5 @@ const orm = {
     },
   };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;

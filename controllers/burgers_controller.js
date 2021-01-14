@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
-const burger = require('../models/burger.js');
+const burger = require('../models/burger');
 
 // Create all our routes and set up logic within those routes where required.
 router.get('/', (req, res) => {
-    burger.selectAll((data) => {
+    burger.all((data) => {
       const hbsObject = {
         burgers: data,
       };
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   });
   
   router.post('/api/burgers', (req, res) => {
-    burger.insertOne(['name', 'devoured'], [req.body.burger_name, req.body.devoured], (result) => {
+    burger.create('burger_name', req.body.name, (result) => {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   
     console.log('condition', condition);
   
-    burger.updateOne(
+    burger.update(
       {
         devoured: req.body.devoured,
       },

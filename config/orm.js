@@ -37,7 +37,7 @@ const objToSql = (ob) => {
 
   // Object for all our SQL statement functions.
 const orm = {
-    selectAll(tableInput, cb) {
+    all(tableInput, cb) {
       const queryString = `SELECT * FROM ${tableInput};`;
       connection.query(queryString, (err, result) => {
         if (err) {
@@ -46,7 +46,7 @@ const orm = {
         cb(result);
       });
     },
-    insertOne(table, col, val, cb) {
+    create(table, col, val, cb) {
       let queryString = `INSERT INTO ${table}`;
   
       queryString += ' (';
@@ -67,7 +67,7 @@ const orm = {
       });
     },
     // An example of objColVals would be {name: Shrimp Burger, Devoured: true}
-    updateOne(table, objColVals, condition, cb) {
+    update(table, objColVals, condition, cb) {
       let queryString = `UPDATE ${table}`;
   
       queryString += ' SET ';
@@ -84,7 +84,22 @@ const orm = {
         cb(result);
       });
     },
-  };
+
+    // Deleting an item from the table in this case would change the state of devoured to true
+    delete(table, condition, cb) {
+    let queryString = `DELETE FROM ${table}`;
+    queryString += ' WHERE ';
+    queryString += condition;
+
+    connection.query(queryString, (err, result) => {
+        if (err) {
+            throw err;
+        }
+
+        cb(result);
+    });
+  },
+};
 
 // Export the orm object for the model (burger.js).
 module.exports = orm;

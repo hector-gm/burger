@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           const newDevour = e.target.getAttribute('data-newdevour');
   
           const newDevourState = {
-            devour: newDevour,
+            devoured: newDevour,
           };
   
           fetch(`/api/burgers/${id}`, {
@@ -73,5 +73,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
           location.reload();
         });
       });
+    }  
+      // DELETE
+    const deleteBurgerBtns = document.querySelectorAll('.delete-burger');
+
+    // Set up the event listeners for each delete button
+    deleteBurgerBtns.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const id = e.target.getAttribute('data-id');
+
+            // Send the delete request
+            fetch(`/api/burgers/${id}`, {
+                method: 'DELETE',
+            }).then((res) => {
+                console.log(res);
+                console.log(`Deleted burger: ${id}`);
+
+                // Reload the page
+                location.reload();
+            });
+        });
     });
+ });
     
